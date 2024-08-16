@@ -1,0 +1,71 @@
+<%- include('partials/header') %>
+
+<div class="box-auth-register">
+    <div class="col">
+      <div class="card bg-light card-body ">
+        <div class="text-center mb-3 logo-auth">
+          Student Forum
+        </div>
+        <h4 class="text-center mb-3"> Register</h4>
+
+        <%- include("partials/messages"); %>
+        <div class="container">
+        <form action="/register" method="POST">
+
+            <label for="name">Name</label>
+            <input
+              type="name"
+              id="name"
+              name="name"
+              class="form-control" autocomplete="off"
+              placeholder="Enter Name"
+              value="<%= typeof name != 'undefined' ? name : '' %>"
+            />
+            <br2></br2>
+
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control" autocomplete="off"
+              placeholder="Enter Email"
+              value="<%= typeof email != 'undefined' ? email : '' %>"
+            />
+           <br2></br2>
+
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control" autocomplete="off"
+              placeholder="Create Password"
+              value="<%= typeof password != 'undefined' ? password : '' %>"
+            />
+            <br2></br2>
+
+            <label for="password2">Confirm Password</label>
+            <input
+              type="password"
+              id="password2"
+              name="password2"
+              class="form-control" autocomplete="off"
+              placeholder="Confirm Password"
+              value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+            />
+            <!-- <br2></br2> -->
+            <br>
+          <button type="submit" class="btn btn-dark btn-auth">
+            <i class="fas fa-user-plus"></i>&nbsp Register
+          </button>
+        </form>
+
+        <a class="no-acc" href="/login">Sign in instead</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+<br> <br> <br> <br>
+<%- include('partials/footer') %>

@@ -1,0 +1,46 @@
+<%- include('partials/header') %>
+
+ <div class="box-auth-login">
+    <div class="col ">
+      <div class="card bg-light card-body ">
+        <div class="text-center mb-3 logo-auth">
+          Student Forum
+        </div>
+        <h4 class="text-center mb-3">Sign in</h4>
+
+        <%- include("partials/messages"); %>
+        <div class="container">
+        <form action="/login" method="POST">
+
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control" autocomplete="off"
+              placeholder="Enter Email"
+            />
+            <br2></br2>
+
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control" autocomplete="off"
+              placeholder="Enter Password"
+            />
+
+          <br>
+
+          <button type="submit" class="btn btn-dark btn-auth"><i class="fas fa-sign-in-alt"></i>&nbsp&nbspLogin</button>
+        </form>
+
+          <a class="no-acc" href="/register">Don't have an Account?</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+<br> <br> <br> <br>
+<%- include('partials/footer') %>

@@ -1,0 +1,98 @@
+<%- include('partials/header') %>
+
+<section class="bg-light " id="middle">
+  <div class="row inner-page">
+    <div class="left-menu col-lg-2 ">
+      <nav class="navbar navbar-light">
+        <div class="menues">
+          <ul class="navbar-nav">
+            <li class="navbar-item">
+              <a href="/composeQuestion" class="btn btn-outline-dark" > Ask a Question</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div id="main-content-question" class="col-lg-8">
+      <div class="QA-box">
+      <!-- <br2></br2> -->
+      <% questions.reverse().forEach(function(q){ %>
+        <div class="card  mb-3 card-question" id="<%= q._id %>">
+          <div class="card-header ">
+            <%=q.question%>
+          </div>
+          <div class="card-footer bg-white">
+            <!-- answer this question -->
+            <form action="/composeAnswer" method="post">
+              <input type="hidden" name="questionId" value="<%=q._id%>" >
+              <button class="btn btn-sm btn-secondary btn-answer" type="submit" name="submit">Answer this Question</button>
+            </form>
+            <!-- asked by -->
+            <p class="asked"> Asked by : <%=q.questionAsker%></p>
+          </div>
+        </div>
+
+        <% q.answers.forEach(function(ans){ %>
+          <div class="card bg-light mb-3 card-answer" id="<%= ans._id %>">
+            <p class="card-body bg-white">
+                <!-- answer -->
+              <% ans.answer.split("\n").forEach(function(line){ %>
+                <%=line%> <br>
+              <% }) %>
+              <!-- link -->
+              <% if(ans.link != ""){ %>
+                <br2></br2>
+                link: <a href="<%=ans.link%>"><%=ans.link%></a>
+              <% } %>
+            </p>
+
+            <div class="card-footer">
+              <!-- like -->
+              <% if(ans.like.includes(user.id)){ %>
+                <div class="fas fa-thumbs-up icon like" data-value="<%=ans._id%>" onclick="like(this)">
+                  <p class="like-cnt"><% if(ans.like.length>0){%> <%=ans.like.length%> <%}%></p>
+                </div>
+              <% } else{ %>
+                <div class="far fa-thumbs-up icon like" data-value="<%=ans._id%>" onclick="like(this)">
+                  <p class="like-cnt"><% if(ans.like.length>0){%> <%=ans.like.length%> <%}%></p>
+                </div>
+              <% } %>
+              <!-- dislike -->
+              <% if(ans.dislike.includes(user.id)){ %>
+                <div class="fas fa-thumbs-down icon dislike" data-value="<%=ans._id%>" onclick="dislike(this)">
+                  <p class="dislike-cnt"><% if(ans.dislike.length>0){%> <%=ans.dislike.length%> <%}%></p>
+                </div>
+              <% } else{ %>
+                <div class="far fa-thumbs-down icon dislike" data-value="<%=ans._id%>" onclick="dislike(this)">
+                  <p class="dislike-cnt"><% if(ans.dislike.length>0){%> <%=ans.dislike.length%> <%}%></p>
+                </div>
+              <% } %>
+              <!-- answered by -->
+              <p class="answered"> Answered by : <%=ans.owner%></p>
+            </div>
+          </div>
+        <% }); %>
+        <br>
+        <br2></br2>
+      <% }); %>
+
+      <div class="card bg-light mb-3">
+        <div class="card-header">
+          Roadmap of Web development.
+        </div>
+
+        <div class="card-body">
+          <img style="width:80%; justify-content: center;" src="images/img_frontend.jpg" alt="Frontend Roadmap Chart">
+          <img style="width:80%; justify-content: center;" src="images/img_backend.jpg" alt="Backend Roadmap Chart">
+          <p>Chart created by GitHub user Kamranahmedse:</p>
+          <a target="_blank" href="https://github.com/kamranahmedse/developer-roadmap">github.com/kamranahmedse/developer-roadmap</a>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<%- include('partials/footer') %>

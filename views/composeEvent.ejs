@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+<div class="box">
+  <h2>Insert a new Event Details</h2>
+  <form class="question-frm" action="/composeEvent" method="post">
+    <label for="title">Title<span>*</span></label>
+    <input type="text" class="form-control" name="title" value="" placeholder="Enter a suitable title for an Event" autocomplete="off" required>
+    <br2> </br2>
+
+    <label for="content">Content<span>*</span></label>
+    <textarea class="form-control" name="content" rows="5" cols="40" placeholder="Write a details about an Event" required></textarea>
+    <br2> </br2>
+
+    <label for="link">Website Link (Optional)</label>
+    <input type="text" class="form-control" name="link" placeholder="Provide a link if needed (write only one link)" autocomplete="off">
+    <br2> </br2>
+
+    <label for="youtube-link">Youtube Link (Optional)</label>
+    <input type="text" class="form-control" name="youtubeLink" placeholder="Provide a link if needed (write only embeded link of Youtube video)" autocomplete="off">
+    <br2> </br2>
+    <br2> </br2>
+
+    <div class="buttons">
+      <button class="btn btn-outline-dark btn-question" type="reset" name="reset">Reset</button>
+      <!-- If answer is null then it wan't be submit... add this feature. -->
+      <button class="btn btn-dark btn-question" type="submit" name="sumbit">Submit</button>
+    </div>
+  </form>
+</div>
+<br> <br>
+<br> <br> <br> <br>
+<%- include('partials/footer') %>

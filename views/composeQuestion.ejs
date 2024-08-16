@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+
+<div class="box">
+  <h2>Ask a Public Question</h2>
+  <form class="question-frm" action="/composeQuestion" method="post">
+    <label for="question">Question<span>*</span></label>
+    <textarea class="form-control" name="question" rows="5" cols="40" placeholder="Be specific and imagine you’re asking a question to another person" required></textarea>
+    <br2></br2>
+
+    <div class="buttons">
+      <button class="btn btn-outline-dark btn-question" type="reset" name="reset">Reset</button>
+
+      <button class="btn btn-dark btn-question" type="submit" name="sumbit">Submit</button>
+    </div>
+  </form>
+</div>
+<br> <br> <br> <br>
+<%- include('partials/footer') %>

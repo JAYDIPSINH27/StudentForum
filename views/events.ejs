@@ -1,0 +1,127 @@
+<%- include('partials/header') %>
+<%- include("partials/messages"); %>
+  <section class="bg-light" id="middle">
+    <div class="row inner-page">
+
+      <div class="left-menu col-lg-2 ">
+        <nav class="navbar navbar-light">
+          <div class="menues">
+            <ul class="navbar-nav">
+              <li class="navbar-item">
+
+                 <% if(admin===true){%>
+
+                   <a href="/composeEvent" class="btn btn-sm btn-outline-dark mb-2" > Add New Event</a>
+
+                   <a href="/composeAnnouncement" class="btn btn-sm btn-outline-dark  mb-2 " > Add Announcement</a>
+
+                <%}%>
+
+              </li>
+
+            </ul>
+          </div>
+        </nav>
+
+      </div>
+
+
+
+      <div id="main-content" class="col-lg-8">
+
+        <!-- new -->
+        <div class="bg-white tab-content">
+
+          <div class="col-md-18 m-auto">
+            <ul class="nav nav-tabs event-box bg-light">
+              <li class="nav-item">
+                <a class="nav-link active"data-toggle="tab" href="#academics-section" aria-selected="true">New Events</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"data-toggle="tab" href="#announcement-section"aria-selected="false">Announcements</a>
+              </li>
+
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane fade show active inner-tab  boxContent" id="academics-section">
+
+                <% events.reverse().forEach(function(event){ %>
+                  <div class="card bg-light mt-2 mb-3 event-card">
+                    <div class="card-header ">
+                      <%=event.title%>
+                    </div>
+
+                    <div class="card-body">
+
+                      <% event.content.split("\n").forEach(function(line){ %>
+                        <%=line%> <br>
+                      <% }) %>
+
+                      <% if(event.link != ""){ %>
+                        <br2></br2>
+                        link: <a href="<%=event.link%>"><%=event.link%></a>
+                      <% } %>
+
+                      <% if(event.youtubeLink != ""){ %>
+                        <br2></br2>
+                        <div class="embed-responsive embed-responsive-16by9">
+                          <iframe class="embed-responsive-item" src="<%=event.youtubeLink%>" allowfullscreen></iframe>
+                        </div>
+                      <% } %>
+                    </div>
+                  </div>
+                <% }); %>
+
+              </div>
+
+              <!-- announcements -->
+              <div class="tab-pane fade inner-tab  boxContent" id="announcement-section">
+
+                <% announcements.reverse().forEach(function(announcement){ %>
+                  <div class="card bg-light mt-2 mb-3">
+                    <div class="card-header">
+                      <%=announcement.title%>
+                    </div>
+
+                    <div class="card-body">
+
+                      <% announcement.content.split("\n").forEach(function(line){ %>
+                        <%=line%> <br>
+                      <% }) %>
+
+                      <% if(announcement.link != ""){ %>
+                        <br2></br2>
+                        link: <a href="<%=announcement.link%>"><%=announcement.link%></a>
+                      <% } %>
+
+                      <% if(announcement.youtubeLink != ""){ %>
+                        <br2></br2>
+                        <div class="embed-responsive embed-responsive-16by9">
+                          <iframe class="embed-responsive-item" src="<%=announcement.youtubeLink%>" allowfullscreen></iframe>
+                        </div>
+                      <% } %>
+                    </div>
+                  </div>
+                <% }); %>
+
+
+
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <!-- new end -->
+
+
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+<%- include('partials/footer') %>

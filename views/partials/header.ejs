@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- <title><%=title%></title> -->
+  <title>Student Forum</title>
+  <link rel="icon" href="fav/favicon.ico">
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/2598021a0e.js" crossorigin="anonymous"></script>
+
+  <!-- CSS stylesheets -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<% if(authFlag === true){ %>
+    <section id="title-home">
+        <!-- Navigation-bar Section -->
+        <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand navbar-brand-home" href="/dashboard">Student Forum</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglertitlebar"
+              aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglertitlebar">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="/events">Events <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item ">
+                  <a class="nav-link" href="/academics">Academics <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item ">
+                  <a class="nav-link" href="/QA">QA <span class="sr-only">(current)</span></a>
+                </li>
+
+              </ul>
+             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <%= user.name %>  <span class="sr-only">(current)</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a href="/logout" class="dropdown-item btn btn-secondary">Logout</a>
+                </div>
+              </li>
+            </ul>
+
+            </div>
+          </div>
+
+        </nav>
+      </section>
+
+<%  } else{ %>
+  <section id="title-home">
+      <!-- Navigation-bar Section -->
+      <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand navbar-brand-home" href="/">Student Forum</a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglertitlebar"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarTogglertitlebar">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li class="nav-item ">
+                <a class="nav-link" href="/events">Events <span class="sr-only">(current)</span></a>
+              </li>
+
+              <li class="nav-item ">
+                <a class="nav-link" href="/academics">Academics <span class="sr-only">(current)</span></a>
+              </li>
+
+              <li class="nav-item ">
+                <a class="nav-link" href="/QA">QA <span class="sr-only">(current)</span></a>
+              </li>
+
+            </ul>
+
+           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+               <li class="nav-item mr-2">
+                  <a href="/register" class="btn btn-outline-light btn-block  mb-2"
+                  >Register</a>
+               </li>
+
+              <li class="nav-item ">
+                  <a href="/login" class="btn btn-light btn-block">Login</a>
+              </li>
+
+          </ul>
+
+          </div>
+        </div>
+
+      </nav>
+    </section>
+<%  } %>
